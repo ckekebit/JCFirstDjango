@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from article import views as article_views
 from article.views import RSSFeed
+from account import views as account_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,4 +28,6 @@ urlpatterns = [
     url(r'^tag(?P<tag>\w+)/$', article_views.search_tag, name = 'search_tag'),
     url(r'^search/$', article_views.blog_search, name = 'search'),
     url(r'^feed/$', RSSFeed(), name = "RSS"),
+    url(r'^uploadfile/$', article_views.upload_file, name = "upload_file"),
+    url(r'^account/$', account_views.register, name = 'register'),
 ]

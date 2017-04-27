@@ -46,6 +46,14 @@
  		    <li class="nav-item">
                         <a class="button-success pure-button" href="{% url "RSS" %}">RSS</a>  
                     </li>
+		    <li>
+			<form enctype="multipart/form-data" action="/uploadfile/" method="post">  
+			    {% csrf_token %}
+   			    <input type="file" name="myfile" />  
+   			    <br/>  
+   			    <input type="submit" value="upload"/>  
+			</form>  
+		    </li>
                 </ul>
             </nav>
         </div>

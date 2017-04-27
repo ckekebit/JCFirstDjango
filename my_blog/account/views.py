@@ -23,9 +23,9 @@ def register(request):
             user.passworld = passworld
             user.email = email
             user.save()
-            #return render_to_response('success.html',{'username':username})
+            #return render_to_response('success.html',{'username':username}, RequestContext(request))
 	    return render(request, 'success.html',{'username':username})
     else:
         uf = UserForm()
-    #return render_to_response('register.html',{'uf':uf})
+    #return render_to_response('register.html',{'uf':uf}, RequestContext(request))
     return render(request, 'register.html',{'uf':uf})

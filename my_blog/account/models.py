@@ -14,6 +14,6 @@ class User(models.Model):
         return self.username
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username','email')
+    list_display = ('username', 'password', 'email')
     
-admin.site.register(User,UserAdmin)
+admin.site.register(User, UserAdmin)

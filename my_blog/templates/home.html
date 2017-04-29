@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<ul class="nav navbar-nav navbar-right">
+    {% if not request.user.is_authenticated %}
+    <li>
+        <a href="{% url 'login' %}">Login</a>
+    </li>
+    {% else %}
+    <li class="dropdown">
+   	Username: 
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ request.user.username }}<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">个人信息</a></li>
+            <li class="divider"></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </li>
+    {% endif %}
+</ul>
+
+
 <div class="posts">
     {% for post in post_list %}
         <section class="post">

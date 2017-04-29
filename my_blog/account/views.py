@@ -20,16 +20,10 @@ def register(request):
             password = uf.cleaned_data['password']
             email = uf.cleaned_data['email']
        	    user = User.objects.create_user(username=username, password=password, email=email)
-            #user = User()
-            #user.username = username
-            #user.passworld = passworld
-            #user.email = email
             user.save()
-            #return render_to_response('success.html',{'username':username}, RequestContext(request))
 	    return render(request, 'success.html',{'username':username})
     else:
         uf = UserForm()
-    #return render_to_response('register.html',{'uf':uf}, RequestContext(request))
     return render(request, 'register.html',{'uf':uf})
 
 def login_site(request):
@@ -46,3 +40,7 @@ def login_site(request):
                 'login_err': 'Please recheck your username or password !'
             })
     return render(request, 'login.html')
+
+def logout_site(request):
+    logout(request)
+    return HttpResponseRedirect('/')

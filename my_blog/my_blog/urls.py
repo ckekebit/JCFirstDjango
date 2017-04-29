@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^uploadfile/$', article_views.upload_file, name = "upload_file"),
     url(r'^register/$', account_views.register, name = 'register'),
     url(r'^login/', account_views.login_site, name='login'),
+    url(r'^logout/', account_views.logout_site, name='logout'),
 ]

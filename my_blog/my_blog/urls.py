@@ -18,6 +18,10 @@ from django.contrib import admin
 from article import views as article_views
 from article.views import RSSFeed
 from account import views as account_views
+from media import views as media_views
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,8 +32,11 @@ urlpatterns = [
     url(r'^tag(?P<tag>\w+)/$', article_views.search_tag, name = 'search_tag'),
     url(r'^search/$', article_views.blog_search, name = 'search'),
     url(r'^feed/$', RSSFeed(), name = "RSS"),
-    url(r'^uploadfile/$', article_views.upload_file, name = "upload_file"),
+    url(r'^uploadfile/$', media_views.upload_file, name = "upload_file"),
     url(r'^register/$', account_views.register, name = 'register'),
     url(r'^login/', account_views.login_site, name='login'),
     url(r'^logout/', account_views.logout_site, name='logout'),
-]
+    url(r'^mediahome/$', media_views.media_home, name='media_home'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()

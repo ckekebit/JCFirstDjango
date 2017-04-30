@@ -75,15 +75,3 @@ class RSSFeed(Feed) :
     def item_description(self, item):
         return item.content
 
-def upload_file(request):  
-    if request.method == "POST":
-        myFile =request.FILES.get("myfile", None)
-        if not myFile:
-            #return HttpResponse("no files for upload!")
-	    return render(request,'home.html')
-        destination = open(os.path.join("/Users/longjing/Django/my_blog/upload/",myFile.name), 'wb+')
-        for chunk in myFile.chunks():
-            destination.write(chunk)  
-        destination.close()  
-        #return HttpResponse("upload over!")
-  	return render(request,'home.html')

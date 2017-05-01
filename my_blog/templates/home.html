@@ -20,13 +20,8 @@
     {% endif %}
 </ul>
 
-<video width="320" height="240" controls>
-    {% load static %}
-    <source src="{% static "mov_bbb.mp4" %}" type="video/mp4"></source>
-</video>
-
-
-<video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+{% load static %}
+<video id="my-video" class="vjs-matrix video-js vjs-big-play-centered" controls preload="auto" width="640" height="264"
   poster="{% static "wood.jpg" %}" data-setup="{}">
     <source src="{% static "mov_bbb.mp4" %}" type='video/mp4'>
     <p class="vjs-no-js">
@@ -35,7 +30,7 @@
     </p>
   </video>
 
-
+<script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
 
 <div class="posts">
     {% for post in post_list %}

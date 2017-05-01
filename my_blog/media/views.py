@@ -13,7 +13,7 @@ def upload_file(request):
         myFile =request.FILES.get("myfile", None)
         if not myFile:
             return render(request,'home.html')
-	filePath = os.path.join("/Users/longjing/Django/my_blog/upload/",myFile.name)
+	filePath = os.path.join("/Users/longjing/Django/my_blog/static/",myFile.name)
         destination = open(filePath, 'wb+')
         for chunk in myFile.chunks():
             destination.write(chunk)
